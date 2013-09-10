@@ -23,15 +23,19 @@
     NSLog(@"Reminder On Date:  %@", [myTimeSpec notificationDate]);
     
     EKEventStore *store = [[EKEventStore alloc] init];
-    [store requestAccessToEntityType:EKEntityMaskReminder completion:^(BOOL granted, NSError *error) {
+    [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
         if (!granted) {
             fprintf(stdout, "No access to reminders...\n");
             if (error != Nil) {
                 fprintf(stderr, "%s\n", [[error localizedDescription] UTF8String]);
             }
         }
+        else {
+            fprintf(stdout, "Access granted to reminders...\n");
+        }
     }];
-
+    
+    [NSApp terminate:self];
 }
 
 @end
