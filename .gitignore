@@ -13,5 +13,6 @@ DerivedData
 *.xcodeproj/*.mode*
 *.xcodeproj/*.pbxuser
 *.xcodeproj/*.perspectivev3
+*xcworkspace
 xcuserdata
 xcshareddata
