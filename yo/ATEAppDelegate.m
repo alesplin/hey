@@ -7,12 +7,31 @@
 //
 
 #import "ATEAppDelegate.h"
+#import "ATETimeSpec.h"
+#import <EventKit/EventKit.h>
 
 @implementation ATEAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    NSArray *args = [[NSProcessInfo processInfo] arguments];
+    NSString *timeString = [args objectAtIndex:1];
+    NSString *msgString = [args objectAtIndex:2];
+    
+    myTimeSpec = [[ATETimeSpec alloc] initWithString:timeString];
+    NSLog(@"Current Date:      %@", [NSDate date]);
+    NSLog(@"Reminder On Date:  %@", [myTimeSpec notificationDate]);
+    
+    EKEventStore *store = [[EKEventStore alloc] init];
+    [store requestAccessToEntityType:EKEntityMaskReminder completion:^(BOOL granted, NSError *error) {
+        if (!granted) {
+            fprintf(stdout, "No access to reminders...\n");
+            if (error != Nil) {
+                fprintf(stderr, "%s\n", [[error localizedDescription] UTF8String]);
+            }
+        }
+    }];
+
 }
 
 @end

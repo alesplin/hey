@@ -7,8 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class ATETimeSpec;
 
-@interface ATEAppDelegate : NSObject <NSApplicationDelegate>
+@interface ATEAppDelegate : NSObject <NSApplicationDelegate> {
+    ATETimeSpec *myTimeSpec;
+}
 
 @property (assign) IBOutlet NSWindow *window;
 

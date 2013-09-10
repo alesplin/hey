@@ -7,3 +7,11 @@
 
 build.log
 *.tgz
+*.swp
+DerivedData
+.DS_Store
+*.xcodeproj/*.mode*
+*.xcodeproj/*.pbxuser
+*.xcodeproj/*.perspectivev3
+xcuserdata
+xcshareddata
