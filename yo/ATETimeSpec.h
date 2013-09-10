@@ -12,12 +12,13 @@
 @interface ATETimeSpec : NSObject
 {
     TimeSpecType    _type;
+    NSDateComponents *_dateComponents;
     NSDate          *_notificationDate;
 }
 
 @property (readwrite,assign) TimeSpecType type;
 @property (readonly) NSDate *notificationDate;
-@property (readonly) NSArray *notificationDateList;
+@property (readonly) NSDateComponents *notificationDateComponents;
 
 - (id) initWithString:(NSString *) tsArg;
 

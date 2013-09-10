@@ -12,7 +12,7 @@
 
 @synthesize type = _type;
 @synthesize notificationDate = _notificationDate;
-@synthesize notificationDateList = _notificationDateList;
+@synthesize notificationDateComponents = _notificationDateComponents;
 
 - (id) initWithString:(NSString *)tsArg
 {
@@ -159,7 +159,6 @@
     
     NSString            *timeString;
     NSCalendar          *myCal;
-    NSDateComponents    *notificationDateComponents;
     NSDateComponents    *currentDateComponents;
     NSArray             *dateTimeTokens;
     NSArray             *dateTokens;
@@ -167,7 +166,7 @@
     
     myCal = [NSCalendar currentCalendar];
     timeString = [tsArg substringWithRange:NSMakeRange(1, [tsArg length] - 1)];
-    notificationDateComponents = [[NSDateComponents alloc] init];
+    _notificationDateComponents = [[NSDateComponents alloc] init];
     currentDateComponents = [myCal components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit)
                                    fromDate:[NSDate date]];
     
@@ -191,9 +190,9 @@
             seconds = 0;
         }
         
-        [notificationDateComponents setYear:year];
-        [notificationDateComponents setMonth:month];
-        [notificationDateComponents setDay:day];
+        [_notificationDateComponents setYear:year];
+        [_notificationDateComponents setMonth:month];
+        [_notificationDateComponents setDay:day];
     }
     else {
         timeTokens = [timeString componentsSeparatedByString:@":"];
@@ -207,16 +206,16 @@
         else {
             seconds = 0;
         }
-        [notificationDateComponents setYear:[currentDateComponents year]];
-        [notificationDateComponents setMonth:[currentDateComponents month]];
-        [notificationDateComponents setDay:[currentDateComponents day]];
+        [_notificationDateComponents setYear:[currentDateComponents year]];
+        [_notificationDateComponents setMonth:[currentDateComponents month]];
+        [_notificationDateComponents setDay:[currentDateComponents day]];
     }    
     
-    [notificationDateComponents setHour:hours];
-    [notificationDateComponents setMinute:minutes];
-    [notificationDateComponents setSecond:seconds];
+    [_notificationDateComponents setHour:hours];
+    [_notificationDateComponents setMinute:minutes];
+    [_notificationDateComponents setSecond:seconds];
     
-    _notificationDate = [myCal dateFromComponents:notificationDateComponents];
+    _notificationDate = [myCal dateFromComponents:_notificationDateComponents];
     return YES;
 } /* END _readAbsoluteTimeSpecString: */
 
