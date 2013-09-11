@@ -2,8 +2,8 @@
 //  yo.h
 //  yo
 //
-//  Created by Alex Esplin on 9/6/12.
-//  Copyright (c) 2012 Alex Esplin. All rights reserved.
+//  Created by Alex Esplin on 9/8/13.
+//  Copyright (c) 2013 Alex Esplin. All rights reserved.
 //
 
 #ifndef yo_yo_h

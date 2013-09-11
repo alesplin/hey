@@ -1,9 +1,9 @@
 //
 //  ATETimeSpec.h
-//  Hey
+//  yo
 //
-//  Created by Alex Esplin on 8/8/12.
-//  Copyright (c) 2012 Alex Esplin. All rights reserved.
+//  Created by Alex Esplin on 9/8/13.
+//  Copyright (c) 2013 Alex Esplin. All rights reserved.
 //
 
 #import "yo.h"

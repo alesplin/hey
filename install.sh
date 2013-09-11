@@ -14,6 +14,14 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Copying app bundle to ${HOME}/bin/"
-mkdir -p ${HOME}/bin
+if [ ! -d "${HOME}/bin" ]; then
+    mkdir -p ${HOME}/bin
+fi
 cp -r build/Release/yo.app ${HOME}/bin/
+
+if [ $# -gt 0 ]; then
+    if [ "$1" = "--test" ]; then
+        eval "${HOME}/bin/yo.app/Contents/MacOS/yo +2m 'foo'"
+    fi
+fi
 
