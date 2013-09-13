@@ -30,29 +30,31 @@
 {
     NSError *save_err;
     BOOL rc;
-    NSLog(@"Creating a reminder with message '%@', on date %@", msg, myTimeSpec.notificationDate);
+//    NSLog(@"%d Creating a reminder with message '%@', on date %@", getpid(), msg, myTimeSpec.notificationDate);
     EKReminder *rem = [EKReminder reminderWithEventStore:event_store];
     EKAlarm *reminder_alarm = [EKAlarm alarmWithAbsoluteDate:myTimeSpec.notificationDate];
     [rem addAlarm:reminder_alarm];
     rem.title = msg;
     rem.calendar = reminder_cal;
     rem.startDateComponents = myTimeSpec.notificationDateComponents;
+    rem.dueDateComponents = myTimeSpec.notificationDateComponents;
     
     if (![reminder_cal allowsContentModifications]) {
-        NSLog(@"Houston, we may have a problem...");
+        NSLog(@"%d Houston, we may have a problem...", getpid());
     }
     
+//    NSLog(@"%d %@", getpid(), [rem description]);
     rc = [event_store saveReminder:rem commit:YES error:&save_err];
     
     if (rc) {
-        NSLog(@"Reminder created...");
+        NSLog(@"Reminder '%@' (%@) saved...", rem.title,[myTimeSpec.notificationDate description]);
         return SUCCESS;
     }
     else {
-        NSLog(@"Failed to save reminder to event store.");
-        NSLog(@"Reminder with title: %@, start date components: %@", rem.title, [rem.startDateComponents description]);
-        NSLog(@"Tried saving in reminders list '%@'", reminder_cal.title);
-        NSLog(@"%@", [save_err localizedDescription]);
+        NSLog(@"%d Failed to save reminder to event store.", getpid());
+        NSLog(@"%d Reminder with title: %@, start date components: %@", getpid(), rem.title, [rem.startDateComponents description]);
+        NSLog(@"%d Tried saving in reminders list '%@'", getpid(), reminder_cal.title);
+        NSLog(@"%d %@", getpid(), [save_err localizedDescription]);
         return FAILURE;
     }
 }
@@ -64,32 +66,33 @@
     NSString *msgString = [args objectAtIndex:2];
     
     myTimeSpec = [[ATETimeSpec alloc] initWithString:timeString];
-    NSLog(@"Current Date:      %@", [NSDate date]);
-    NSLog(@"Reminder On Date:  %@", [myTimeSpec notificationDate]);
+    NSLog(@"%d Current Date:      %@", getpid(), [NSDate date]);
+    NSLog(@"%d Reminder On Date:  %@", getpid(), [myTimeSpec notificationDate]);
     
     event_store = [[EKEventStore alloc] init];
     [event_store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
         int rc;
         
         if (!granted) {
-            fprintf(stdout, "No access to reminders...\n");
+            NSLog(@"%d No access to reminders...", getpid());
             if (error != Nil) {
-                fprintf(stderr, "%s\n", [[error localizedDescription] UTF8String]);
+                NSLog(@"%d %@", getpid(), [error localizedDescription]);
             }
         }
         else {
-            fprintf(stdout, "Access granted to reminders...\n");
+            NSLog(@"%d Access to reminders granted...", getpid());
             reminder_cal = [self getRemindersCalendarFromEventStore:event_store];
             if (reminder_cal == nil) {
-                NSLog(@"No event calendar named 'Reminders'");
+                NSLog(@"%d No event calendar named 'Reminders'", getpid());
                 [NSApp terminate:self];
             }
             
             rc = [self createReminderWithMessageText:msgString];
+            assert(rc == 0);
         } /* END else... */
+        
+        [NSApp terminate:self];
     }]; /* END requestAccess completion block */
-    
-    [NSApp terminate:self];
 }
 
 @end
