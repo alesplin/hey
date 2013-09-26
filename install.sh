@@ -1,10 +1,25 @@
-#!/bin/bash
+#!/bin/zsh
 
 echo "Building..."
 
+while [[ $# -gt 0 ]]; do
+    if [[ $1 = "-d" || $1 = "--debug" ]]; then
+        DEBUG=1
+    else
+        print "Unrecognized option: '$1'"
+    fi
+    shift
+done
+
+if [ -n "$DEBUG" ]; then
+    config=Debug
+else
+    config=Release
+fi
+
 xcodebuild -project yo.xcodeproj \
     -target yo \
-    -configuration Release \
+    -configuration $config \
     DSTROOT=build > build.log 2>&1
 
 if [ $? -ne 0 ]; then

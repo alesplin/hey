@@ -176,9 +176,9 @@
         dateTokens = [[dateTimeTokens objectAtIndex:0] componentsSeparatedByString:@"/"];
         timeTokens = [[dateTimeTokens objectAtIndex:1] componentsSeparatedByString:@":"];
         
-        month = [[dateTokens objectAtIndex:0] intValue];
-        day = [[dateTokens objectAtIndex:1] intValue];
-        year = [[dateTokens objectAtIndex:2] intValue];
+        year = [[dateTokens objectAtIndex:0] intValue];
+        month = [[dateTokens objectAtIndex:1] intValue];
+        day = [[dateTokens objectAtIndex:2] intValue];
         
         hours = [[timeTokens objectAtIndex:0] intValue];
         minutes = [[timeTokens objectAtIndex:1] intValue];
