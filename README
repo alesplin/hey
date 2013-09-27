@@ -1,3 +1,15 @@
+################################################################################
+#   Name:       yo
+#   Author:     Alex Esplin
+#   Purpose:    CLI tool to create alarmed reminders.
+#   Copyright:  2013 Alex Esplin
+#
+#   License:    This work is licensed under the Creative Commons
+#               Attribution-ShareAlike 3.0 Unported License. To view a copy
+#               of this license, visit
+#               http://creativecommons.org/licenses/by-sa/3.0/.
+################################################################################
+
 'yo' is a simple tool to create reminders on the command-line. It uses a
 simple time spec to create a reminder at either a relative offset to the
 current time (all offsets are treated as positive) or at a specified
@@ -13,7 +25,13 @@ To install: run the provided install script
 
 `./install.sh`
 
-This will require the command-line tools from Xcode.
+This will require the command-line tools from Xcode. It will build the project
+and install the app in a directory named 'bin' in your home directory (bin
+will be created if it does not already exist).
+
+The easiest way to use it is to then create an alias:
+
+alias yo="${HOME}/bin/yo.app/Contents/MacOS/yo"
 
 ################################################################################
 #   Usage
