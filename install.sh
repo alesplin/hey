@@ -5,7 +5,7 @@ echo "Building..."
 while [[ $# -gt 0 ]]; do
     if [[ $1 = "-d" || $1 = "--debug" ]]; then
         DEBUG=1
-    elif [[ $1 = "-t" | $1 = "--test" ]]; then
+    elif [[ $1 = "-t" || $1 = "--test" ]]; then
         TEST=1
     else
         print "Unrecognized option: '$1'"
