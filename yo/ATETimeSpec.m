@@ -41,12 +41,6 @@
                 
                 break;
                 
-            case 'e':
-                
-                fprintf(stdout, "need to parse repeating time-spec...\n");
-                
-                break;
-                
             default:
                 /* Houston, we have a problem... */
                 return nil;
