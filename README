@@ -1,0 +1,43 @@
+'yo' is a simple tool to create reminders on the command-line. It uses a
+simple time spec to create a reminder at either a relative offset to the
+current time (all offsets are treated as positive) or at a specified
+date/time.
+
+It uses the EventKit framework to create a reminder with an alarm based on the
+time spec detailed in the help message (`yo --help`).
+
+################################################################################
+#   Installation
+################################################################################
+To install: run the provided install script
+
+`./install.sh`
+
+This will require the command-line tools from Xcode.
+
+################################################################################
+#   Usage
+################################################################################
+
+Usage:
+yo <time-spec> <message>
+
+Where:
+
+    <time-spec> is one of the following types:
+
+        +[<count>[w|d|h|m|s]]
+            (reminder time relative to now)
+
+        @<[yyyy/mm/dd_]hh:mm[:ss]
+            (reminder at given date/time)
+
+    <message> is a quoted string to use as the reminder text.
+
+Examples:
+
+    yo +45m 'some message'
+        reminder 45 minutes from now
+
+    yo @2013/04/2_12:45 'some message'
+        reminder on April 2, 2013, at 12:45
