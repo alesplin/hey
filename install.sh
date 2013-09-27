@@ -5,6 +5,8 @@ echo "Building..."
 while [[ $# -gt 0 ]]; do
     if [[ $1 = "-d" || $1 = "--debug" ]]; then
         DEBUG=1
+    elif [[ $1 = "-t" | $1 = "--test" ]]; then
+        TEST=1
     else
         print "Unrecognized option: '$1'"
     fi
@@ -34,9 +36,7 @@ if [ ! -d "${HOME}/bin" ]; then
 fi
 cp -r build/Release/yo.app ${HOME}/bin/
 
-if [ $# -gt 0 ]; then
-    if [ "$1" = "--test" ]; then
-        eval "${HOME}/bin/yo.app/Contents/MacOS/yo +2m 'foo'"
-    fi
+if [ -n "$TEST" ]; then
+    eval "${HOME}/bin/yo.app/Contents/MacOS/yo +2m 'foo'"
 fi
 
