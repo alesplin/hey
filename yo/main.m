@@ -26,7 +26,7 @@ void usage()
     fprintf(stdout, "        @<[yyyy/mm/dd_]hh:mm[:ss]\n");
     fprintf(stdout, "            (reminder at given time)\n");
     fprintf(stdout, "\n");
-    fprintf(stdout, "    <message> is a double-quoted string to use as the reminder text.\n");
+    fprintf(stdout, "    <message> is a quoted string to use as the reminder text.\n");
     
     fprintf(stdout, "\n");
     fprintf(stdout, "Examples:\n");
