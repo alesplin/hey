@@ -36,6 +36,9 @@ if [ ! -d "${HOME}/bin" ]; then
 fi
 cp -r build/Release/yo.app ${HOME}/bin/
 
+echo "Creating tarball for toolsweb..."
+cd build/Release && tar -cvzf ../../yo_app.tgz yo.app
+
 if [ -n "$TEST" ]; then
     eval "${HOME}/bin/yo.app/Contents/MacOS/yo +2m 'foo'"
     eval "${HOME}/bin/yo.app/Contents/MacOS/yo 'test message only'"
