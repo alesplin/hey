@@ -30,7 +30,7 @@
 {
     NSError *save_err;
     BOOL rc;
-    NSLog(@"%d Creating a reminder with message '%@', on date %@", getpid(), msg, myTimeSpec.notificationDate);
+//    NSLog(@"%d Creating a reminder with message '%@', on date %@", getpid(), msg, myTimeSpec.notificationDate);
     EKReminder *rem = [EKReminder reminderWithEventStore:event_store];
     
     if (myTimeSpec != nil) {
