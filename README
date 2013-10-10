@@ -38,11 +38,11 @@ alias yo="${HOME}/bin/yo.app/Contents/MacOS/yo"
 ################################################################################
 
 Usage:
-yo <time-spec> <message>
+yo [time-spec] <message>
 
 Where:
 
-    <time-spec> is one of the following types:
+    time-spec is one of the following types:
 
         +[<count>[w|d|h|m|s]]
             (reminder time relative to now)
@@ -59,3 +59,6 @@ Examples:
 
     yo @2013/04/2_12:45 'some message'
         reminder on April 2, 2013, at 12:45
+
+    yo 'some message'
+        reminder with no alarm/due date/start date
