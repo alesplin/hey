@@ -30,10 +30,16 @@
 {
     NSError *save_err;
     BOOL rc;
-//    NSLog(@"%d Creating a reminder with message '%@', on date %@", getpid(), msg, myTimeSpec.notificationDate);
+    NSLog(@"%d Creating a reminder with message '%@', on date %@", getpid(), msg, myTimeSpec.notificationDate);
     EKReminder *rem = [EKReminder reminderWithEventStore:event_store];
-    EKAlarm *reminder_alarm = [EKAlarm alarmWithAbsoluteDate:myTimeSpec.notificationDate];
-    [rem addAlarm:reminder_alarm];
+    
+    if (myTimeSpec != nil) {
+        EKAlarm *reminder_alarm = [EKAlarm alarmWithAbsoluteDate:myTimeSpec.notificationDate];
+        [rem addAlarm:reminder_alarm];
+        [rem setStartDateComponents:myTimeSpec.notificationDateComponents];
+        [rem setDueDateComponents:myTimeSpec.notificationDateComponents];
+    }
+    
     rem.title = msg;
     rem.calendar = reminder_cal;
     rem.startDateComponents = myTimeSpec.notificationDateComponents;
@@ -61,13 +67,26 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    NSString *timeString;
+    NSString *msgString;
     NSArray *args = [[NSProcessInfo processInfo] arguments];
-    NSString *timeString = [args objectAtIndex:1];
-    NSString *msgString = [args objectAtIndex:2];
+    if ([args count] == 3) {
+        timeString = [args objectAtIndex:1];
+        msgString = [args objectAtIndex:2];
+    }
+    else {
+        msgString = [args objectAtIndex:1];
+        timeString = nil;
+    }
     
-    myTimeSpec = [[ATETimeSpec alloc] initWithString:timeString];
-    NSLog(@"%d Current Date:      %@", getpid(), [NSDate date]);
-    NSLog(@"%d Reminder On Date:  %@", getpid(), [myTimeSpec notificationDate]);
+    if (timeString) {
+        myTimeSpec = [[ATETimeSpec alloc] initWithString:timeString];
+        NSLog(@"%d Current Date:      %@", getpid(), [NSDate date]);
+        NSLog(@"%d Reminder On Date:  %@", getpid(), [myTimeSpec notificationDate]);
+    }
+    else {
+        myTimeSpec = nil;
+    }
     
     event_store = [[EKEventStore alloc] init];
     [event_store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {

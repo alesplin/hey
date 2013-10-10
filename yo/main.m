@@ -13,12 +13,12 @@ void usage()
 {
     fprintf(stdout, "Usage:\n");
     
-    fprintf(stdout, "yo <time-spec> <message>\n");
+    fprintf(stdout, "yo [time-spec] <message>\n");
     fprintf(stdout, "\n");
     
     fprintf(stdout, "Where:\n");
     fprintf(stdout, "\n");
-    fprintf(stdout, "    <time-spec> is one of the following types:\n");
+    fprintf(stdout, "    time-spec is one of the following types:\n");
     fprintf(stdout, "\n");
     fprintf(stdout, "        +[<count>[w|d|h|m|s]]\n");
     fprintf(stdout, "            (reminder date/time relative to now)\n");
@@ -36,14 +36,16 @@ void usage()
     fprintf(stdout, "\n");
     fprintf(stdout, "    yo @2013/04/2_12:45 \"some message\"\n");
     fprintf(stdout, "        reminder on April 2, 2013, at 12:45\n");
+    fprintf(stdout, "yo \"some message\"\n");
+    fprintf(stdout, "        reminder 'some message' with no alarm or start date.\n");
     fprintf(stdout, "\n");
 }
 
 int main(int argc, const char * argv[])
 {
-    
+    /* TODO: make an interactive mode if there are no arguments */
     /* we need some arguments */
-    if (argc < 3) {
+    if (argc < 2) {
         usage();
         exit(1);
     }

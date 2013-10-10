@@ -38,5 +38,6 @@ cp -r build/Release/yo.app ${HOME}/bin/
 
 if [ -n "$TEST" ]; then
     eval "${HOME}/bin/yo.app/Contents/MacOS/yo +2m 'foo'"
+    eval "${HOME}/bin/yo.app/Contents/MacOS/yo 'test message only'"
 fi
 
