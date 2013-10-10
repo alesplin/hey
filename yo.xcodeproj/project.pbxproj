@@ -19,6 +19,7 @@
 		ACD949EA17DD95AB007D8DC4 /* yoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD949E917DD95AB007D8DC4 /* yoTests.m */; };
 		ACD949F717DDA1B0007D8DC4 /* ATETimeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD949F617DDA1B0007D8DC4 /* ATETimeSpec.m */; };
 		ACD949F917DDA307007D8DC4 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD949F817DDA307007D8DC4 /* EventKit.framework */; };
+		ACE29141180756FE002C2E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD949D417DD95AB007D8DC4 /* MainMenu.xib */; };
 		ACFC8A4018074A83004DA574 /* yo.icns in Resources */ = {isa = PBXBuildFile; fileRef = ACD949F317DD96CC007D8DC4 /* yo.icns */; };
 /* End PBXBuildFile section */
 
@@ -244,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE29141180756FE002C2E44 /* MainMenu.xib in Resources */,
 				ACD949CA17DD95AB007D8DC4 /* InfoPlist.strings in Resources */,
 				ACD949D817DD95AB007D8DC4 /* Images.xcassets in Resources */,
 				ACD949D017DD95AB007D8DC4 /* Credits.rtf in Resources */,
