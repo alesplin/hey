@@ -12,7 +12,6 @@
 		ACD949CC17DD95AB007D8DC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD949CB17DD95AB007D8DC4 /* main.m */; };
 		ACD949D017DD95AB007D8DC4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = ACD949CE17DD95AB007D8DC4 /* Credits.rtf */; };
 		ACD949D317DD95AB007D8DC4 /* ATEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD949D217DD95AB007D8DC4 /* ATEAppDelegate.m */; };
-		ACD949D617DD95AB007D8DC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD949D417DD95AB007D8DC4 /* MainMenu.xib */; };
 		ACD949D817DD95AB007D8DC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD949D717DD95AB007D8DC4 /* Images.xcassets */; };
 		ACD949DF17DD95AB007D8DC4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD949DE17DD95AB007D8DC4 /* XCTest.framework */; };
 		ACD949E017DD95AB007D8DC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD949BF17DD95AB007D8DC4 /* Cocoa.framework */; };
@@ -20,6 +19,7 @@
 		ACD949EA17DD95AB007D8DC4 /* yoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD949E917DD95AB007D8DC4 /* yoTests.m */; };
 		ACD949F717DDA1B0007D8DC4 /* ATETimeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD949F617DDA1B0007D8DC4 /* ATETimeSpec.m */; };
 		ACD949F917DDA307007D8DC4 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD949F817DDA307007D8DC4 /* EventKit.framework */; };
+		ACFC8A4018074A83004DA574 /* yo.icns in Resources */ = {isa = PBXBuildFile; fileRef = ACD949F317DD96CC007D8DC4 /* yo.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,7 +247,7 @@
 				ACD949CA17DD95AB007D8DC4 /* InfoPlist.strings in Resources */,
 				ACD949D817DD95AB007D8DC4 /* Images.xcassets in Resources */,
 				ACD949D017DD95AB007D8DC4 /* Credits.rtf in Resources */,
-				ACD949D617DD95AB007D8DC4 /* MainMenu.xib in Resources */,
+				ACFC8A4018074A83004DA574 /* yo.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +481,7 @@
 				ACD949EF17DD95AB007D8DC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACD949F017DD95AB007D8DC4 /* Build configuration list for PBXNativeTarget "yoTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +490,7 @@
 				ACD949F217DD95AB007D8DC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
