@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ACCF5C72188FCF4500A81ADD /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD949F817DDA307007D8DC4 /* EventKit.framework */; };
 		ACD949C017DD95AB007D8DC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD949BF17DD95AB007D8DC4 /* Cocoa.framework */; };
 		ACD949CA17DD95AB007D8DC4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACD949C817DD95AB007D8DC4 /* InfoPlist.strings */; };
 		ACD949CC17DD95AB007D8DC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD949CB17DD95AB007D8DC4 /* main.m */; };
@@ -18,7 +19,6 @@
 		ACD949E817DD95AB007D8DC4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ACD949E617DD95AB007D8DC4 /* InfoPlist.strings */; };
 		ACD949EA17DD95AB007D8DC4 /* yoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD949E917DD95AB007D8DC4 /* yoTests.m */; };
 		ACD949F717DDA1B0007D8DC4 /* ATETimeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD949F617DDA1B0007D8DC4 /* ATETimeSpec.m */; };
-		ACD949F917DDA307007D8DC4 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD949F817DDA307007D8DC4 /* EventKit.framework */; };
 		ACE29141180756FE002C2E44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACD949D417DD95AB007D8DC4 /* MainMenu.xib */; };
 		ACFC8A4018074A83004DA574 /* yo.icns in Resources */ = {isa = PBXBuildFile; fileRef = ACD949F317DD96CC007D8DC4 /* yo.icns */; };
 /* End PBXBuildFile section */
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACD949F917DDA307007D8DC4 /* EventKit.framework in Frameworks */,
+				ACCF5C72188FCF4500A81ADD /* EventKit.framework in Frameworks */,
 				ACD949C017DD95AB007D8DC4 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
