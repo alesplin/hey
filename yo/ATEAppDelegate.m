@@ -14,12 +14,31 @@
 
 - (EKCalendar *) getRemindersCalendarFromEventStore:(EKEventStore *)store
 {
-    NSArray *cal_list = [store calendarsForEntityType:EKEntityTypeReminder];
-    
-//    NSLog(@"Got %d calendars for reminders...", (int)[cal_list count]);
-    for (EKCalendar *cal in cal_list) {
-        if ([[cal title] isEqualToString:@"Reminders"]) {
-            return cal;
+    NSError *save_err = nil;
+    EKSource *event_source = nil;
+    BOOL save_result;
+
+    EKCalendar *yo_reminders = [store calendarWithIdentifier:@"yo"];
+    if (yo_reminders == nil) {
+        /* create the 'yo' reminders list... */
+        yo_reminders = [EKCalendar calendarForEntityType:EKEntityTypeReminder eventStore:store];
+        [yo_reminders setTitle:@"yo"];
+
+        /* get and set the source for it--we want iCloud... */
+        for (EKSource *s in [store sources]) {
+            if (([s sourceType] == EKSourceTypeCalDAV) && ([[s title] isEqualToString:@"iCloud"])) {
+                event_source = s;
+                break;
+            }
+        }
+        if (event_source == nil) {
+            NSLog(@"Unable to set iCloud as source for reminders list 'yo'");
+            return nil;
+        }
+        [yo_reminders setSource:event_source];
+        save_result = [store saveCalendar:yo_reminders commit:YES error:&save_err];
+        if (save_result == YES) {
+            return yo_reminders;
         }
     }
     
@@ -102,7 +121,7 @@
             NSLog(@"%d Access to reminders granted...", getpid());
             reminder_cal = [self getRemindersCalendarFromEventStore:event_store];
             if (reminder_cal == nil) {
-                NSLog(@"%d No event calendar named 'Reminders'", getpid());
+                NSLog(@"%d No event calendar named 'yo'", getpid());
                 [NSApp terminate:self];
             }
             

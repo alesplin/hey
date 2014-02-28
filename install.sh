@@ -34,7 +34,11 @@ echo "Copying app bundle to ${HOME}/bin/"
 if [ ! -d "${HOME}/bin" ]; then
     mkdir -p ${HOME}/bin
 fi
-cp -r build/Release/yo.app ${HOME}/bin/
+if [[ $config == "Debug" ]]; then
+    cp -rf -ra build/Debug/* ${HOME}/bin/
+else
+    cp -rf build/Release/yo.app ${HOME}/bin/
+fi
 
 echo "Creating tarball for toolsweb..."
 cd build/Release
