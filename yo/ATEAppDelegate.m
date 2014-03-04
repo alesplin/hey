@@ -18,7 +18,15 @@
     EKSource *event_source = nil;
     BOOL save_result;
 
-    EKCalendar *yo_reminders = [store calendarWithIdentifier:@"yo"];
+    EKCalendar *yo_reminders = nil;
+
+    /* go find the 'yo' reminders list */
+    for (EKCalendar *cal in [store calendarsForEntityType:EKEntityTypeReminder]) {
+        if ([[cal title] isEqualToString:@"yo"]) {
+            return cal;
+        }
+    }
+
     if (yo_reminders == nil) {
         /* create the 'yo' reminders list... */
         yo_reminders = [EKCalendar calendarForEntityType:EKEntityTypeReminder eventStore:store];

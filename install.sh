@@ -35,7 +35,7 @@ if [ ! -d "${HOME}/bin" ]; then
     mkdir -p ${HOME}/bin
 fi
 if [[ $config == "Debug" ]]; then
-    cp -rf -ra build/Debug/* ${HOME}/bin/
+    cp -rf build/Debug/* ${HOME}/bin/
 else
     cp -rf build/Release/yo.app ${HOME}/bin/
 fi
